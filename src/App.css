@@ -1,0 +1,29 @@
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.form-container{
+  margin: 3rem auto;
+  padding: 1rem;
+  max-width: 600px;
+  background-color: #dcdcdc;
+  border-radius: 3px;
+}
+
+textarea, input{
+  padding: 3px .5rem;
+  width: 100%;
+}
+
+button{
+  margin-top: 1rem;
+  padding: 1rem;
+  width: 100%;
+  cursor: pointer;
+}
+
+.error-message{
+  color: red;
+}
