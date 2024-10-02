@@ -1,8 +1,5 @@
-# React + Vite
+Form component that takes a JSON schema to generate Input components.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Images: 
+<img width="619" alt="Screenshot 2024-10-02 at 13 34 59" src="https://github.com/user-attachments/assets/4ec43a34-b303-4c69-be15-3a2f98c2ec14">
+<img width="625" alt="Screenshot 2024-10-02 at 13 35 09" src="https://github.com/user-attachments/assets/7746d1a8-9236-4e2f-8370-1b58ea2bd454">
