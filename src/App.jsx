@@ -4,6 +4,7 @@ import './App.css';
 function App() {
   const [showForm, setShowForm] = useState(false);
   const [jsonData, setJsonData] = useState({});
+  const [formData, setFormData] = useState({});
 
   const handleTextArea = (e) => {
     try {
@@ -21,16 +22,34 @@ function App() {
     window.location.reload();
   };
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("Form Data:", formData);
+  };
+
   return (
     <>
       {!showForm ? (
         <div className="form-container">
-          <textarea onInput={handleTextArea} rows="15" cols="50" placeholder="Enter a JSON schema"></textarea>
+          <textarea
+            onInput={handleTextArea}
+            rows="15"
+            cols="50"
+            placeholder="Enter a JSON schema"
+          ></textarea>
           <button onClick={generateForm}>Generate Form</button>
         </div>
       ) : jsonData.fields ? (
         <div className="form-container">
-          <form>
+          <form onSubmit={handleSubmit}>
             <h1>{jsonData.title || 'Generated Form'}</h1>
             {jsonData.fields.map((field, i) => (
               <div key={i} className="inp-group">
@@ -45,19 +64,32 @@ function App() {
                           id={`${field.name}_${option}`}
                           name={field.name}
                           value={option}
+                          onChange={handleChange}
                           required={field.required}
                         />
-                        <label htmlFor={`${field.name}_${option}`} className="radio-label">{option}</label>
+                        <label
+                          htmlFor={`${field.name}_${option}`}
+                          className="radio-label"
+                        >
+                          {option}
+                        </label>
                       </div>
                     ))}
                   </div>
                 )}
 
                 {field.type === 'select' && field.options && (
-                  <select id={field.name} name={field.name} required={field.required}>
+                  <select
+                    id={field.name}
+                    name={field.name}
+                    onChange={handleChange}
+                    required={field.required}
+                  >
                     <option value="">Select {field.label}</option>
                     {field.options.map((option, j) => (
-                      <option key={j} value={option}>{option}</option>
+                      <option key={j} value={option}>
+                        {option}
+                      </option>
                     ))}
                   </select>
                 )}
@@ -67,6 +99,7 @@ function App() {
                     type={field.type}
                     id={field.name}
                     name={field.name}
+                    onChange={handleChange}
                     required={field.required}
                   />
                 )}
